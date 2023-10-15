@@ -636,8 +636,8 @@
 
 //==================================================
 .how {
-    @include adaptiveValue("padding-top", 160, 30);
-    @include adaptiveValue("padding-bottom", 155, 30);
+    @include adaptiveValue("padding-top", 160, 40);
+    @include adaptiveValue("padding-bottom", 155, 20);
     // .how__container
 
     &__container {
@@ -733,6 +733,8 @@
 }
 // ====================================================
 .reviews {
+    @include adaptiveValue("padding-top", 130, 20);
+    @include adaptiveValue("padding-bottom", 130, 40);
     // .reviews__container
 
     &__container {
@@ -741,16 +743,26 @@
 
     &__body {
         position: relative;
-        padding: 0 toRem(72);
+        @media (min-width: em(600)) {
+            padding: 0 toRem(72);
+        }
     }
     // .reviews__block-header
 
     &__block-header {
+        max-width: toRem(650);
+        margin: 0 auto;
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 90, 30);
+        }
     }
 
     // .reviews__slider
 
     &__slider {
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 106, 30);
+        }
     }
 
     // .reviews__wrapper
@@ -772,7 +784,7 @@
         height: toRem(48);
         border-radius: 50%;
         transform: translate(0px, -50%);
-        background: $greyColor url("@img/reviews/arrow.svg") center no-repeat;
+        background: $bgColoLite url("@img/reviews/arrow.svg") center no-repeat;
 
         // .reviews__arrow--left
 
@@ -783,88 +795,182 @@
         // .reviews__arrow--right
 
         &--right {
+            transform: translate(0px, -50%) rotate(-180deg);
             right: 0;
+        }
+        &.swiper-button-disabled {
+            background: #e3e6f0 url("@img/reviews/arrow.svg") center no-repeat;
+            pointer-events: none;
+            cursor: default;
+        }
+        @media (max-width: em(600)) {
+            display: none;
+        }
+    }
+
+    &__bullets {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        column-gap: toRem(12);
+        row-gap: toRem(3);
+        .swiper-pagination-bullet {
+            transition: all 0.3s;
+
+            flex: 0 0 toRem(12);
+            height: toRem(12);
+            border-radius: toRem(10);
+            background-color: #e3e6f0;
+            cursor: pointer;
+        }
+        .swiper-pagination-bullet-active {
+            flex: 0 0 toRem(40);
+            background-color: $bgColoLite;
         }
     }
 }
-.block-header {
-    // .block-header--center
+//=========================================
+.blog {
+    @include adaptiveValue("padding-top", 84, 40);
+    @include adaptiveValue("padding-bottom", 84, 20);
+    // .blog__container
 
-    &--center {
+    &__container {
+        display: grid;
     }
 
-    // .block-header__title
+    // .blog__block-header
 
-    &__title {
-    }
-}
-.swiper {
-}
-.swiper-wrapper {
-}
-.slide-reviews {
-    // .slide-reviews__logo
-
-    &__logo {
+    &__block-header {
+        max-width: toRem(690);
+        margin: 0 auto;
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 56, 25);
+        }
     }
 
-    // .slide-reviews__text
-
-    &__text {
-    }
-
-    // .slide-reviews__user
-
-    &__user {
-    }
-
-    // .slide-reviews__avatar
-
-    &__avatar {
-    }
-
-    // .slide-reviews__body
-
-    &__body {
-    }
-
-    // .slide-reviews__name
-
-    &__name {
-    }
-
-    // .slide-reviews__rating
-
-    &__rating {
-    }
-}
-.swiper-slide {
-}
-.text {
-}
-.rating {
-    // .rating__body
-
-    &__body {
-    }
-
-    // .rating__active
-
-    &__active {
-    }
-
-    // .rating__items
+    // .blog__items
 
     &__items {
+        display: grid;
+        gap: toRem(48);
+        grid-template-columns: repeat(auto-fill, minmax(toRem(400), 1fr));
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 56, 20);
+        }
+        @media (max-width: $mobileSmall) {
+            grid-template-columns: repeat(auto-fill, minmax(toRem(280), 1fr));
+        }
     }
 
-    // .rating__item
+    // .blog__item
 
     &__item {
     }
 
-    // .rating__value
+    // .blog__view-more
 
-    &__value {
+    &__view-more {
+        justify-self: center;
+        color: $bgColoLite;
+        @include adaptiveValue("font-size", 24, 18);
+        line-height: math.div(32, 24);
+        font-weight: 700;
+        padding-right: em(26, 24);
+        background: url("@img/blog/arrow.svg") right no-repeat;
+        @media (any-hover: hover){
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.item-blog {
+    display: grid;
+    // .item-blog__image
+
+    &__image-ibg {
+        aspect-ratio: 444/300;
+        border-radius: toRem(24);
+        overflow: hidden;
+        img {
+            transition: all 0.5s;
+        }
+        &:not(:last-child) {
+            margin-bottom: toRem(24);
+        }
+        @media (any-hover: hover) {
+            &:hover {
+                img {
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+
+    // .item-blog__data
+
+    &__data {
+        line-height: math.div(28, 18);
+        &:not(:last-child) {
+            margin-bottom: toRem(16);
+        }
+    }
+
+    // .item-blog__title
+
+    &__title {
+        color: $darkColor;
+        @include adaptiveValue("font-size", 32, 28);
+        line-height: math.div(40, 32);
+        font-weight: 700;
+        &:not(:last-child) {
+            margin-bottom: toRem(16);
+        }
+    }
+
+    // .item-blog__text
+
+    &__text {
+        &:not(:last-child) {
+            margin-bottom: toRem(24);
+        }
+    }
+
+    // .item-blog__tags
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: toRem(12);
+        row-gap: toRem(3);
+    }
+
+    // .item-blog__tag
+
+    &__tag {
+        background: #f3f5f9;
+        padding: toRem(8) toRem(16);
+        color: #545971;
+        font-size: toRem(14);
+        line-height: math.div(20, 14);
+        font-weight: 600;
+        border-radius: toRem(30);
+        transition: all 0.3s;
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: $bgColoLite;
+                color: #fff;
+            }
+        }
+    }
+}
+.link-title {
+    @media (any-hover: hover) {
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
