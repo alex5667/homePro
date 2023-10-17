@@ -154,7 +154,7 @@
     // .done__item
 
     &__item {
-        color: $bgColoLite;
+        color: $bgColorLite;
         padding-left: toRem(32);
         line-height: 1.3;
         @include adaptiveValue("font-size", 20, 16);
@@ -210,7 +210,7 @@
         align-items: center;
         padding: toRem(5);
         justify-content: center;
-        background-color: $bgColoSemi;
+        background-color: $bgColorSemi;
         img {
             max-width: 100%;
         }
@@ -333,7 +333,7 @@
         padding-left: toRem(28);
         @include adaptiveValue("font-size", 20, 16);
         font-weight: 700;
-        color: $bgColoSemi;
+        color: $bgColorSemi;
         line-height: 1.4;
 
         transform: translate(0, 15%);
@@ -359,7 +359,7 @@
 
     &__info {
         border-radius: toRem(24);
-        background-color: $bgColoLite;
+        background-color: $bgColorLite;
         padding: toRem(12) toRem(32);
         color: #fff;
         line-height: 1.55;
@@ -444,7 +444,7 @@
 
     &--blue {
         text-align: center;
-        background-color: $bgColoLite;
+        background-color: $bgColorLite;
         color: #fff;
         @media (max-width: em(669.98)) {
             padding: toRem(20);
@@ -784,7 +784,7 @@
         height: toRem(48);
         border-radius: 50%;
         transform: translate(0px, -50%);
-        background: $bgColoLite url("@img/reviews/arrow.svg") center no-repeat;
+        background: $bgColorLite url("@img/reviews/arrow.svg") center no-repeat;
 
         // .reviews__arrow--left
 
@@ -826,7 +826,7 @@
         }
         .swiper-pagination-bullet-active {
             flex: 0 0 toRem(40);
-            background-color: $bgColoLite;
+            background-color: $bgColorLite;
         }
     }
 }
@@ -873,14 +873,14 @@
 
     &__view-more {
         justify-self: center;
-        color: $bgColoLite;
+        color: $bgColorLite;
         @include adaptiveValue("font-size", 24, 18);
         line-height: math.div(32, 24);
         font-weight: 700;
         padding-right: em(26, 24);
         background: url("@img/blog/arrow.svg") right no-repeat;
-        @media (any-hover: hover){
-            &:hover{
+        @media (any-hover: hover) {
+            &:hover {
                 text-decoration: underline;
             }
         }
@@ -961,7 +961,7 @@
         transition: all 0.3s;
         @media (any-hover: hover) {
             &:hover {
-                background-color: $bgColoLite;
+                background-color: $bgColorLite;
                 color: #fff;
             }
         }
@@ -973,4 +973,166 @@
             text-decoration: underline;
         }
     }
+}
+
+//==============================================================================
+.questions {
+    @include adaptiveValue("padding-top", 190, 40);
+    @include adaptiveValue("padding-bottom", 230, 40);
+    // .questions__container
+
+    &__container {
+        display: grid;
+        align-items: start;
+        grid-template-columns: auto 57.847222%;
+        column-gap: toRem(20);
+        row-gap: toRem(30);
+        @media (max-width: $tablet) {
+            grid-template-columns: auto;
+        }
+    }
+
+    // .questions__block-header
+
+    &__block-header {
+    }
+
+    // .questions__spollers
+
+    &__spollers {
+    }
+}
+
+.spollers-questions {
+    display: grid;
+    gap: toRem(12);
+
+    // .spollers-questions__item
+
+    &__item {
+        padding: toRem(24) toRem(32);
+        border-radius: toRem(12);
+        transition: background-color 0.5s;
+
+        &[open] {
+            background-color: #f3f5f9;
+        }
+        @media (max-width: $mobileSmall) {
+            padding: toRem(15) toRem(24);
+        }
+    }
+
+    // .spollers-questions__title
+
+    &__title {
+        line-height: 120%;
+        list-style: none;
+        transition: all 0.5s;
+        padding-right: toRem(30);
+
+        @include adaptiveValue("font-size", 24, 18);
+        font-weight: 700;
+
+        &::marker {
+            display: none;
+        }
+        ._spoller-init & {
+            position: relative;
+            cursor: pointer;
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                right: toRem(0);
+                top: 50%;
+                background-color: #000;
+                height: toRem(2);
+                width: toRem(12);
+                transition: transform 0.5s ease 0s;
+            }
+            &::before {
+                transform: translate(-75%, -50%) rotate(44deg);
+            }
+            &::after {
+                transform: translate(0, -50%) rotate(-44deg);
+            }
+            &._spoller-active {
+                &::before {
+                    transform: translateX(-75%) rotate(-44deg);
+                }
+                &::after {
+                    transform: rotate(40deg);
+                }
+            }
+        }
+    }
+
+    // .spollers-questions__body
+
+    &__body {
+        padding-top: toRem(16);
+        font-size: toRem(16);
+        line-height: math.div(24, 16);
+    }
+}
+
+//===========================================================================
+.talk {
+	background-color: $bgColor;
+	position: relative;
+	// .talk__container
+	&__container {
+		@media (min-width: $tablet) {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			@include adaptiveValue("gap", 100, 30);
+		}
+	}
+	// .talk__content
+	&__content {
+		position: relative;
+		z-index: 2;
+		@include adaptiveValue("padding-top", 165, 40);
+		@include adaptiveValue("padding-bottom", 105, 40);
+		&::before {
+			content: "";
+			background: url("@img/talk/decor.svg") 0 0 / 83% no-repeat;
+			width: 100%;
+			aspect-ratio: 581 / 44;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	}
+	// .talk__block-header
+	&__block-header {
+		&:not(:last-child) {
+			margin-bottom: toRem(16);
+		}
+	}
+	// .talk__done
+	&__done {
+		&:not(:last-child) {
+			margin-bottom: toRem(24);
+		}
+	}
+	// .talk__image
+	&__image {
+		img {
+			max-width: 100%;
+		}
+		@media (min-width: $tablet) {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 100%;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			@include adaptiveValue("gap", 100, 30);
+			img {
+				grid-column: 2 / 3;
+				justify-self: end;
+			}
+		}
+	}
 }
