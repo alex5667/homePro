@@ -86,11 +86,11 @@
 	// .subscribe__form
 	&__form {
 		border-radius: toRem(60);
-		padding: toRem(15);
+		padding: toRem(12);
 		background-color: #fff;
 		display: flex;
 		position: relative;
-        align-items: center;
+		align-items: center;
 		@media (max-width: $mobileSmall) {
 			flex-direction: column;
 			border-radius: toRem(10);
@@ -111,7 +111,7 @@
 	}
 	// .subscribe__input
 	&__input {
-		height: toRem(41);
+		height: toRem(51);
 		flex: 1 1 auto;
 		padding: 0 toRem(8);
 		&._form-error {
@@ -123,7 +123,7 @@
 	}
 	// .subscribe__button
 	&__button {
-        margin-left: toRem(5);
+		margin-left: toRem(5);
 	}
 }
 .social {

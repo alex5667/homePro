@@ -248,7 +248,7 @@ export function spollers() {
 					const spollersBlock = spollerTitle.closest('[data-spollers]');
 					const oneSpoller = spollersBlock.hasAttribute('data-one-spoller');
 					const scrollSpoller = spollerBlock.hasAttribute('data-spoller-scroll');
-					const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 700;
+					const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
 					if (!spollersBlock.querySelectorAll('._slide').length) {
 						if (oneSpoller && !spollerBlock.open) {
 							hideSpollersBody(spollersBlock);
